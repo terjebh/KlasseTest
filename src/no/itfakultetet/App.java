@@ -1,5 +1,7 @@
 package no.itfakultetet;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 
@@ -22,13 +24,17 @@ public class App {
                 System.exit(0);
             } else if (menyvalg.equals("1")) {
                 // Legg til nytt dyr
-                System.out.println("Du har valgt å legge til et nytt dyr");
+
                 Dyr.leggtilDyr();
             } else if (menyvalg.equals("2")) {
                 // Skriv til skjerm eksisterende dyr
-                System.out.println("Du har valgt å vise eksisterende dyr");
+                if (Files.exists(Paths.get("dyr.csv"))) {
+                    Dyr.visDyr();
+                } else {
+                    System.out.println("Det er ingen lagrede dyr å vise. Lage ett?");
+                }
             } else {
-                System.out.println(menyvalg+ "er et ukjent menyvalg");
+                System.out.println(menyvalg + "er et ukjent menyvalg");
             }
         }
     }

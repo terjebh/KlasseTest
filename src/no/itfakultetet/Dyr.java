@@ -1,5 +1,6 @@
 package no.itfakultetet;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -63,6 +64,25 @@ public class Dyr implements DyreMetoder {
             fil.close();
         } catch (IOException e) {
             System.out.println("Noe gikk galt. Her er beskjeden fra systemet: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public static void visDyr() {
+
+        try {
+            BufferedReader filInn = Files.newBufferedReader(Paths.get("dyr.csv"),StandardCharsets.UTF_8);
+            System.out.println("-".repeat(40));
+            System.out.printf("%-15s %-15s %-15s\n", "Navn", "Art","Lyd" );
+            System.out.println("-".repeat(40));
+            filInn.lines().forEach(l -> {
+                String[] ord = l.split(",");
+                System.out.printf("%-15s %-15s %-15s\n",ord[0],ord[1],ord[2]);
+            });
+            System.out.println("-".repeat(40));
+
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
