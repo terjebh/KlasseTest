@@ -35,7 +35,7 @@ public class Dyr implements DyreMetoder {
 
     public static void leggtilDyr() {
         Dyr nyttDyr = new Dyr();
-        Scanner dyrIn = new Scanner(System.in);
+        Scanner dyrIn = new Scanner(System.in,StandardCharsets.UTF_8);
         System.out.println("Nytt dyr");
         System.out.print("Navn: ");
         nyttDyr.setNavn(dyrIn.nextLine());

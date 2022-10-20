@@ -1,3 +1,6 @@
+
+// [Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8
+
 package no.itfakultetet;
 
 import java.nio.file.Files;
